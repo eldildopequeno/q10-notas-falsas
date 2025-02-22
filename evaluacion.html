@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Evaluación - Q10 Académico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        .header {
+            width: 100%;
+            background: #b71c1c;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        .container {
+            width: 90%;
+            margin: 10px auto;
+        }
+        .info-box {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #f0f0f0;
+        }
+        tr:nth-child(even) {
+            background: #ffffff;
+        }
+        tr:nth-child(odd) {
+            background: #f0f0f0;
+        }
+        .nota {
+            width: 40px;
+            text-align: center;
+            border: none;
+            font-weight: bold;
+            background: inherit;
+        }
+        .rojo {
+            color: red;
+        }
+        .azul {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="index.html">Institucional</a>
+            <a href="index.html">Académico</a>
+            <a href="index.html">Tesorería</a>
+            <a href="evaluacion.html">Resultados de Evaluación</a>
+            <a href="index.html">Estado de Cuenta</a>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="info-box">
+            <p><strong>Año lectivo:</strong> 2025</p>
+            <p><strong>Grupo:</strong> Noveno C</p>
+            <p><strong>Grado:</strong> Noveno</p>
+        </div>
+        <table>
+            <tr>
+                <th>Asignatura</th>
+                <th>Nota Primer Periodo</th>
+                <th>Segundo Periodo</th>
+                <th>Tercer Periodo</th>
+                <th>Cuarto Periodo</th>
+            </tr>
+            <script>
+                const materias = [
+                    "Español", "Ciencias Naturales - Biología", "Ciencias Sociales, Historia y Geografía",
+                    "Educación Artística y Cultural", "Educación Física, Recreación y Deportes", "Educación Religiosa",
+                    "Matemáticas", "Tecnología e Informática", "Filosofía", "Idioma Extranjero, Inglés", "Democracia",
+                    "Emprendimiento", "Educación Vial", "Introducción a la Media Técnica",
+                    "Competencias Ciudadanas", "Geometría", "Comp Fund en TICS", "Ciencias Naturales - Química",
+                    "Lectura y Escritura"
+                ];
+                materias.forEach((materia, index) => {
+                    let rowClass = index % 2 === 0 ? "even" : "odd";
+                    document.write(`<tr class="${rowClass}">
+                        <td>${materia}</td>
+                        <td><input type="number" class="nota rojo" value="0" min="0" max="5" step="0.1" oninput="actualizarColor(this)"></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>`);
+                });
+            </script>
+        </table>
+    </div>
+    <script>
+        function actualizarColor(input) {
+            let valor = parseFloat(input.value);
+            if (valor >= 3.0) {
+                input.classList.remove("rojo");
+                input.classList.add("azul");
+            } else {
+                input.classList.remove("azul");
+                input.classList.add("rojo");
+            }
+        }
+    </script>
+</body>
+</html>
